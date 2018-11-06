@@ -6,15 +6,20 @@
 package lendle.courses.wp.midterm_wp;
 
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Arrays;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.AccessibleAttribute;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
+import javax.swing.JScrollPane;
 import javax.swing.ProgressMonitor;
 import javax.swing.SwingUtilities;
 
@@ -51,7 +56,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "https://mbtskoudsalg.com/images/png-image-7.png", "http://pngimg.com/uploads/eagle/eagle_PNG1227.png", "https://upload.wikimedia.org/wikipedia/commons/4/4a/Photographer_Barnstar.png", "http://pluspng.com/img-png/bulb-hd-png-light-bulb-png-transparent-image-2048.png", " " }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "https://mbtskoudsalg.com/images/png-image-7.png", "http://pngimg.com/uploads/eagle/eagle_PNG1227.png", "https://upload.wikimedia.org/wikipedia/commons/4/4a/Photographer_Barnstar.png", "http://pluspng.com/img-png/bulb-hd-png-light-bulb-png-transparent-image-2048.png", "" }));
 
         jScrollPane1.setViewportView(jList1);
 
@@ -118,7 +123,13 @@ public class NewJFrame extends javax.swing.JFrame {
                         progress.setVisible(false);
                         jButton1.setEnabled(true);
                         //將下載好的項目加入到 jList 裡面
+                        List<Image> value=progress.getIconImages();
+                        DefaultListModel model=(DefaultListModel) jList1.getModel();
+                        model.addElement(value);
+                        jList1.getSelectionModel();
                         
+                        
+                        jList1.updateUI();
                         ////////////////////////////
                         SwingUtilities.invokeLater(new Runnable() {
                             @Override
